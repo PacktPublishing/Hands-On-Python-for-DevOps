@@ -1,0 +1,60 @@
+{
+  "Comment": "A description of my state machine",
+  "StartAt": "Parallel",
+  "States": {
+    "Parallel": {
+      "Type": "Parallel",
+      "Branches": [
+        {
+          "StartAt": "Ping",
+          "States": {
+            "Ping": {
+              "Type": "Pass",
+              "Parameters": {
+                "ping.$": "States.MathRandom($.start, $.end)",
+                "start.$": "$.start",
+                "end.$": "$.end"
+              },
+              "End": true
+            }
+          }
+        },
+        {
+          "StartAt": "Pong",
+          "States": {
+            "Pong": {
+              "Type": "Pass",
+              "Parameters": {
+                "pong.$": "States.MathRandom($.start, $.end)"
+              },
+              "End": true
+            }
+          }
+        }
+      ],
+      "Next": "Choice"
+    },
+    "Choice": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$[0].ping",
+          "NumericEqualsPath": "$[1].pong",
+          "Next": "Success"
+        }
+      ],
+      "Default": "Pass"
+    },
+    "Pass": {
+      "Type": "Pass",
+      "Next": "Parallel",
+      "Parameters": {
+        "start.$": "$[0].start",
+        "end.$": "$[0].end"
+      }
+    },
+    "Success": {
+      "Type": "Succeed"
+    }
+  }
+}
