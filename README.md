@@ -48,7 +48,7 @@ With the following software and hardware list you can run all code files present
 | 1-13 | Google Colab | Windows, macOS, or Linux |
 | 1-13 | Grafana | Windows, macOS, or Linux |
 
-We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it]().
+
 
 ### Related products
 * Go for DevOps [[Packt]](https://www.packtpub.com/product/go-for-devops/9781801818896?utm_source=github&utm_medium=repository&utm_campaign=9781801818896) [[Amazon]](https://www.amazon.com/dp/1801818894)
